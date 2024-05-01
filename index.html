@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=0.5" name="viewport" />
+    <title>Рассчет</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+</head>
+
+<body>
+    <div class="main" id="main">
+        <div class="top">
+            <h1 class="title">Рассчет </h1>
+            <label for="client">Клиент:</label>
+            <input type="text" name="" id="myInput" class="client" value="" oninput="updateChange(event)" />
+            <br /> <br />
+        </div>
+        <div id="container">
+            <div class="clone-me" id="clone-me">
+
+                <form action="">
+                    <button type="button" id="" class="delete" onclick="remove(this)"> x </button>
+                    <select class="custom-select" name="products" id="products" oninput="display.value = value"
+                        onchange="calcOne(this)">
+                        <option value="" disabled selected>Выберите продукт</option>
+                        <optgroup label="БРЕСТ">
+                            <option value="10.05">Сос. Мол</option>
+                            <option value="3.95">Сос. Инд</option>
+                            <option value="9.0">Сос. Инд вес</option>
+                            <option value="10.2">Сос. Кремл</option>
+                            <option value="9.5">Сос. Моцар</option>
+                            <option value="9.95">Сос. Теляч</option>
+                            <option value="10.25">Сос. Докт</option>
+                            <option value="9.9">Сос. Слив</option>
+                            <option value="11.1">Сос. Никол</option>
+                            <option value="12.05">Сос. ДА</option>
+                            <option value="11.4">Сар. Свин</option>
+                            <option value="11.3">Сар. Тел</option>
+                            <option value="10.7">Сар. Кол</option>
+                            <option value="10.95">К-с Вкусн</option>
+                            <option value="10.95">К-с Теляч</option>
+                            <option value="11.15">К-с Докт н/о</option>
+                            <option value="9.05">Морт</option>
+                            <option value="10.1">Молоч</option>
+                            <option value="9.7">Докт</option>
+                            <option value="9.8">Докт. С м</option>
+                            <option value="6.5">Докт с м шт</option>
+                            <option value="9.95">Докт. со сл</option>
+                            <option value="15.5">Венгер</option>
+                            <option value="4.45">Венгер. ср</option>
+                            <option value="16.55">Теляч</option>
+                            <option value="5.10">Теляч. ср</option>
+                            <option value="18.15">Финск</option>
+                            <option value="5.6">Дворян</option>
+                            <option value="13.6">Орех</option>
+                            <option value="6.5">Орех. ср</option>
+                            <option value="17.4">Кремл</option>
+                            <option value="7.5">Кремл. ср</option>
+                            <option value="12.85">Полоса</option>
+                            <option value="16.25">Гурман</option>
+                            <option value="13.65">Мозаика</option>
+                            <option value="14.9">Карм</option>
+                            <option value="15.1">Схаб</option>
+                            <option value="6.4">Кровянка</option>
+                            <option value="26.0">Ла-парма</option>
+                            <option value="26.5">Тисов</option>
+                            <option value="26.0">Медовая</option>
+                            <option value="26.0">Европ</option>
+                            <option value="28.5">Милан</option>
+                            <option value="32.5">Ностол</option>
+                            <option value="10.5">Рижская</option>
+                            <option value="5.7">Дворянская</option>
+                            <option value="8.6">Сливочная</option>
+                            <option value="12.0">Крыло</option>
+                            <option value="7.3">Чайная</option>
+                            <option value="15.9">с/к Груд</option>
+                            <option value="28.5">Брест угощ</option>
+                            <option value="28.8">Новин</option>
+                            <option value="28.7">Элит</option>
+                            <option value="29.5">Итал</option>
+                            <option value="5.8">Вет попул</option>
+                            <option value="24.0">с/к Полин</option>
+                        </optgroup>
+                        <optgroup label="ГОМЕЛЬ">
+                            <option value="5.0">Прудк</option>
+                            <option value="5.2">Кровянка Г</option>
+                            <option value="4.5">Ливер</option>
+                            <option value="17.0">Домаш</option>
+                        </optgroup>
+                        <optgroup label="ИНКО-ФУД">
+                            <option value="15.9">Кремлев</option>
+                            <option value="14.2">Талл</option>
+                            <option value="15.3">Орех</option>
+                            <option value="15.6">Теялч. И</option>
+                            <option value="15.4">Сервел</option>
+                            <option value="28.5">с/к Москв</option>
+                            <option value="28.3">с/к Бр-Лит</option>
+                            <option value="14.0">Мясо в/у</option>
+                            <option value="14.0">Груд в/у</option>
+                            <option value="25.0">Карук</option>
+                        </optgroup>
+                        <optgroup label="ВОЛКОВЫСК">
+                            <option value="10.0">Морт</option>
+                            <option value="10.1">С сал</option>
+                            <option value="10.55">Мол. с тел</option>
+                            <option value="10.3">Молоч</option>
+                            <option value="9.5">Сар. куп</option>
+                            <option value="8.5">Шпик</option>
+                            <option value="8.05">Беловеж</option>
+                            <option value="9.7">Чесноч</option>
+                            <option value="8.05">Ярмор</option>
+                            <option value="9.5">Курорт</option>
+                            <option value="16.1">п/к Волк</option>
+                            <option value="15.5">Гр. сол</option>
+                            <option value="9.8">Ребра</option>
+                            <option value="10.7">сос. Мол. Вол</option>
+                            <option value="9.85">Сос. Ост</option>
+                            <option value="22.9">с/в Тещ</option>
+                            <option value="13.5">Язык</option>
+                            <option value="8.1">Голяшка</option>
+                            <option value="14.5">Рул. фир</option>
+                        </optgroup>
+                        <optgroup label="КАЛИНКОВИЧИ">
+                            <option value="11.7">Эст н/о</option>
+                            <option value="11.95">Вет н/о</option>
+                            <option value="19.0">Панск</option>
+                            <option value="27.5">с/в Сальч</option>
+                            <option value="4.5">Ливер К</option>
+                        </optgroup>
+                        <optgroup label="ГРОДНО">
+                            <option value="23.5">с/к Минск</option>
+                            <option value="23.5">с/к Европ</option>
+                            <option value="24.5">с/в Антон</option>
+                            <option value="24.5">с/в Рубл</option>
+                            <option value="32.5">с/к Дуэт</option>
+                            <option value="27.9">с/в Мед. Гр</option>
+                            <option value="27.9">в/к Москв</option>
+                            <option value="25.0">с/к Минск. обс</option>
+                            <option value="4.5">Ливер Гр</option>
+                            <option value="9.8">Ветчин</option>
+                            <option value="30.9">с/в Гос. Дер</option>
+                            <option value="30.9">с/в Зак. Дер</option>
+                            <option value="26.9">Брест срез</option>
+                            <option value="3.3">Намазки</option>
+                            <option value="37.0">Салянки</option>
+                            <option value="32.5">Киндюк</option>
+                        </optgroup>
+                        <optgroup label="ОШМЯНЫ">
+                            <option value="24.9">с/к Посольс</option>
+                            <option value="25.0">с/в Браун</option>
+                            <option value="13.7">Свойская</option>
+                        </optgroup>
+                        <optgroup label="ЧАСТНИК">
+                            <option value="7.9">Сальтисон</option>
+                            <option value="10.5">Сальтисон Д</option>
+                            <option value="13.0">Кратов</option>
+                            <option value="25.5">Австр</option>
+                            <option value="25.5">По-дом</option>
+                            <option value="25.5">Єлит</option>
+                            <option value="25.5">От деда</option>
+                            <option value="7.4">Шпик П</option>
+                        </optgroup>
+                    </select>
+                    <input type="number" id="weight" oninput="calcOne(this)" placeholder="Вес" />
+                    <var>*</var>
+                    <input type="number" id="price" oninput="calcOne(this)" name="display" placeholder="Цена" />
+                    <var>=</var>
+                    <span id="result"></span>
+                    <br><br>
+                </form>
+            </div>
+        </div> <button id="clone-button"> + </button> <br /> <br />
+        <div class="bottom">
+            <div> <button type="button" name="" class="calc-total" id="calc-total"
+                    onclick="calculateTotal()">Итог:</button>
+                <var class="result_total" id="result_total">0</var>
+            </div>
+        </div>
+        <br>
+        <button type="button" onclick="generatePDF()" class="pull-right">Скачать</button>
+    </div>
+
+    <!-- test -->
+    <script>
+
+        function generatePDF() {
+
+            var element = document.getElementById('main');
+            element.style.width = '100%';
+            element.style.height = '100%';
+            var opt = {
+                filename: 'myfile.pdf',
+                image: { type: 'png', quality: 100 },
+                html2canvas: { scale: 1 },
+                jsPDF: { orientation: 'portrait' }
+            };
+            html2pdf().set(opt).from(element).save();
+        }
+
+
+        function calcOne(one) {
+            let main = String(one.id);
+            let main1 = main.replace(/\D/g, '');
+            let weight = document.getElementById('weight_' + main1).value;
+            let price = document.getElementById('price_' + main1).value;
+            if (weight != '' && price != '') {
+                let weight1 = parseFloat(weight);
+                let price1 = parseFloat(price);
+                let tot_price = weight * price;
+
+                document.getElementById(`result_${main1}`).innerHTML = tot_price.toFixed(2);
+            } else { document.getElementById(`result_${main1}`).innerHTML = '0' }
+        };
+
+
+        function calculateTotal() {
+            var arr = [];
+            arr.push(document.getElementsByTagName("span"));
+            var arrTotal = [];
+            for (var i = 1; i < document.getElementsByTagName("span").length; i++) {
+                arrTotal.push(parseFloat(arr[0][i].innerHTML));
+            };
+
+            let sum = 0;
+            arrTotal.forEach((el) => sum += el);
+            document.getElementById(`result_total`).innerHTML = sum.toFixed(2);
+        };
+
+        (function () {
+
+            var button = document.getElementById("clone-button");
+            button.addEventListener("click", function () {
+                var sourceNode = document.getElementById("clone-me");
+                var node = duplicateNode(sourceNode, ["id", "placeholder"]);
+                sourceNode.parentNode.appendChild(node);
+            }, false);
+
+
+            var counter = 0;
+            function duplicateNode(sourceNode, attributesToBump) {
+                counter++;
+                var out = sourceNode.cloneNode(true);
+                if (out.hasAttribute("id")) { out["id"] = bump(out["id"]); }
+                var nodes = out.getElementsByTagName("*");
+
+                for (var i = 0, len1 = nodes.length; i < len1; i++) {
+                    var node = nodes[i];
+                    for (var j = 0, len2 = attributesToBump.length; j < len2; j++) {
+                        var attribute = attributesToBump[j];
+                        if (node.hasAttribute(attribute)) {
+                            node[attribute] = bump(node[attribute]);
+                        }
+                    }
+                }
+                function bump(/*String*/str) {
+                    return str + "_" + counter;
+                }
+                return out;
+            }
+        })();
+
+        function remove(button) {
+            let number = button.id;
+            let clone = document.getElementById('clone-me' + number)
+            //console.log(clone);
+            clone.remove();
+        };
+
+        window.onload = adjustWidth;
+        var inputField = document.querySelector("#myInput");
+        inputField.addEventListener("input", adjustWidth);
+        function adjustWidth() {
+            var value = inputField.value;
+            var width = value.length * 8 + 50; // 8px per character
+            inputField.style.width = width + "px";
+        }
+    </script>
+</body>
+
+</html>
