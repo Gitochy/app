@@ -138,7 +138,7 @@
                             <option value="24.5">с/в Рубл</option>
                             <option value="32.5">с/к Дуэт</option>
                             <option value="27.9">с/в Мед. Гр</option>
-                            <option value="27.9">в/к Москв</option>
+                            <option value="31.9">в/к Москв</option>
                             <option value="25.0">с/к Минск. обс</option>
                             <option value="4.5">Ливер Гр</option>
                             <option value="9.8">Ветчин</option>
@@ -170,18 +170,20 @@
                     <input type="number" id="price" oninput="calcOne(this)" name="display" placeholder="Цена" />
                     <var>=</var>
                     <span id="result"></span>
-                    <br><br>
                 </form>
+                <br>
             </div>
-        </div> <button id="clone-button"> + </button> <br /> <br />
+        </div>
+        <br>
+        <button id="clone-button"> + </button> <br />
         <div class="bottom">
             <div> <button type="button" name="" class="calc-total" id="calc-total"
                     onclick="calculateTotal()">Итог:</button>
                 <var class="result_total" id="result_total">0</var>
             </div>
         </div>
-        <br>
-        <button type="button" onclick="generatePDF()" class="pull-right">Скачать</button>
+
+        <!-- <button type="button" onclick="generatePDF()" class="pull-right">Скачать</button> -->
     </div>
 
     <!-- test -->
