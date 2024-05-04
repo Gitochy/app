@@ -111,6 +111,10 @@ button.calc-total {
 }
 
 @media (max-width: 440px) {
+    body {
+        margin-bottom: 200%;
+    }
+
     div.main {
         display: flex;
         flex-direction: column;
@@ -138,6 +142,10 @@ button.calc-total {
         border-radius: 2px;
         padding: 4px 10px 6px 5px;
         font-size: 15px;
+    }
+
+    input.price {
+        width: 40px;
     }
 
     span {
